@@ -40,15 +40,12 @@ const siteTitle = `${title} | Analista Programador`;
     <meta name="view-transition" content="same-origin" />
     <script defer data-domain="danielct2005.github.io/Portafolio" src="https://plausible.io/js/script.js"></script>
     <script is:inline>
-      // Forzar siempre la recarga (eliminar esta línea después de unos días)
-      const versionKey = 'portfolio_version';
-      const currentVersion = new Date().toISOString().slice(0, 10); // Fecha actual
+      // Siempre recargar una vez por sesión para evitar cache de GitHub Pages
+      const sessionKey = 'session_loaded';
       
-      console.log('[Cache] Fecha actual:', currentVersion);
-      
-      if (localStorage.getItem(versionKey) !== currentVersion) {
-        console.log('[Cache] Nueva versión - limpiando y recargando...');
-        localStorage.setItem(versionKey, currentVersion);
+      if (!sessionStorage.getItem(sessionKey)) {
+        console.log('[Cache] Primera visita en esta sesión - recargando...');
+        sessionStorage.setItem(sessionKey, 'true');
         
         if ('caches' in window) {
           caches.keys().then(names => {
@@ -58,7 +55,7 @@ const siteTitle = `${title} | Analista Programador`;
         
         window.location.reload();
       } else {
-        console.log('[Cache] Mismo día - cache OK');
+        console.log('[Cache] Sesión ya iniciada - cache OK');
       }
     </script>
   </head>
