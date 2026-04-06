@@ -41,17 +41,36 @@ const siteTitle = `${title} | Analista Programador`;
     <script defer data-domain="danielct2005.github.io/Portafolio" src="https://plausible.io/js/script.js"></script>
     <script is:inline>
       (function() {
-        const versionKey = 'portfolio_version';
-        const currentVersion = '20250406';
+        console.log('[Cache] Iniciando verificación de cache...');
         
-        if (localStorage.getItem(versionKey) !== currentVersion) {
+        const versionKey = 'portfolio_version';
+        const currentVersion = '20250407'; // Nueva versión - cambia cada vez que haces deploy
+        
+        const storedVersion = localStorage.getItem(versionKey);
+        console.log('[Cache] Versión guardada:', storedVersion);
+        console.log('[Cache] Versión actual:', currentVersion);
+        
+        if (storedVersion !== currentVersion) {
+          console.log('[Cache] ¡Versión diferente! Limpiando cache y recargando...');
           localStorage.setItem(versionKey, currentVersion);
+          
           if ('caches' in window) {
+            console.log('[Cache] Limpiando caches del navegador...');
             caches.keys().then(names => {
-              names.forEach(name => caches.delete(name));
+              console.log('[Cache] Caches encontrados:', names);
+              names.forEach(name => {
+                caches.delete(name).then(() => console.log('[Cache] Eliminado:', name));
+              });
             });
+          } else {
+            console.log('[Cache] API caches no disponible');
           }
-          window.location.reload(true);
+          
+          // Forzar recarga sin cache
+          console.log('[Cache] Recargando página...');
+          window.location.reload();
+        } else {
+          console.log('[Cache] Versión sama - nada que hacer');
         }
       })();
     </script>
