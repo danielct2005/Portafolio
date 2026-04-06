@@ -40,22 +40,29 @@ const siteTitle = `${title} | Analista Programador`;
     <meta name="view-transition" content="same-origin" />
     <script defer data-domain="danielct2005.github.io/Portafolio" src="https://plausible.io/js/script.js"></script>
     <script is:inline>
-      // Siempre recargar una vez por sesión para evitar cache de GitHub Pages
-      const sessionKey = 'session_loaded';
+      // Verificar si la página fue cargada desde cache
+      const navType = performance.getEntriesByType("navigation")[0]?.type;
+      console.log('[Cache] Tipo de navegación:', navType);
       
-      if (!sessionStorage.getItem(sessionKey)) {
-        console.log('[Cache] Primera visita en esta sesión - recargando...');
-        sessionStorage.setItem(sessionKey, 'true');
-        
-        if ('caches' in window) {
-          caches.keys().then(names => {
-            names.forEach(name => caches.delete(name));
-          });
+      // Si viene de cache (back/forward o normal), forzar reload
+      if (navType === 'back_forward' || navType === 'navigate') {
+        // Verificar si ya recargamos en esta sesión
+        if (!sessionStorage.getItem('reloaded_once')) {
+          console.log('[Cache] Primera carga - forzar reload sin cache');
+          sessionStorage.setItem('reloaded_once', 'true');
+          
+          if ('caches' in window) {
+            caches.keys().then(names => {
+              names.forEach(name => caches.delete(name));
+            });
+          }
+          
+          window.location.reload();
+        } else {
+          console.log('[Cache] Ya recargamos antes - OK');
         }
-        
-        window.location.reload();
       } else {
-        console.log('[Cache] Sesión ya iniciada - cache OK');
+        console.log('[Cache] Tipo de nav:', navType);
       }
     </script>
   </head>
