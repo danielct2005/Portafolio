@@ -40,16 +40,14 @@ const siteTitle = `${title} | Analista Programador`;
     <meta name="view-transition" content="same-origin" />
     <script defer data-domain="danielct2005.github.io/Portafolio" src="https://plausible.io/js/script.js"></script>
     <script is:inline>
-      // Verificar si la página fue cargada desde cache
-      const navType = performance.getEntriesByType("navigation")[0]?.type;
-      console.log('[Cache] Tipo de navegación:', navType);
-      
-      // Si viene de cache (back/forward o normal), forzar reload
-      if (navType === 'back_forward' || navType === 'navigate') {
-        // Verificar si ya recargamos en esta sesión
-        if (!sessionStorage.getItem('reloaded_once')) {
-          console.log('[Cache] Primera carga - forzar reload sin cache');
-          sessionStorage.setItem('reloaded_once', 'true');
+      // Usar pageshow para detectar cuando la página viene del cache del navegador
+      window.addEventListener('pageshow', function(event) {
+        console.log('[Cache] pageshow - persisted:', event.persisted);
+        
+        // Si la página vino del bfcache (back-forward cache) o si es la primera vez
+        if (event.persisted || !sessionStorage.getItem('first_load_done')) {
+          console.log('[Cache] Página desde cache o primera vez - recargando...');
+          sessionStorage.setItem('first_load_done', 'true');
           
           if ('caches' in window) {
             caches.keys().then(names => {
@@ -59,10 +57,13 @@ const siteTitle = `${title} | Analista Programador`;
           
           window.location.reload();
         } else {
-          console.log('[Cache] Ya recargamos antes - OK');
+          console.log('[Cache] Carga normal - OK');
         }
-      } else {
-        console.log('[Cache] Tipo de nav:', navType);
+      });
+      
+      // También ejecutar al inicio por si pageshow no se dispara
+      if (!sessionStorage.getItem('first_load_done')) {
+        console.log('[Cache] Sin marca de primera carga');
       }
     </script>
   </head>
