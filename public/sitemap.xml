@@ -1,0 +1,32 @@
+---
+const siteUrl = "https://danielct2005.github.io";
+const pages = [
+  { url: "/", priority: "1.0", changefreq: "weekly" },
+  { url: "/about", priority: "0.8", changefreq: "monthly" },
+  { url: "/projects", priority: "0.9", changefreq: "weekly" },
+  { url: "/contacto", priority: "0.8", changefreq: "monthly" },
+];
+const projects = [
+  "sistema-citas-medicas",
+  "sistema-gestion-almacen",
+  "invitacion-boda",
+  "ecommerce-perfumeria"
+];
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  {pages.map((page) => (
+    <url>
+      <loc>{siteUrl}{page.url}</loc>
+      <changefreq>{page.changefreq}</changefreq>
+      <priority>{page.priority}</priority>
+    </url>
+  ))}
+  {projects.map((slug) => (
+    <url>
+      <loc>{siteUrl}/projects/{slug}</loc>
+      <changefreq>monthly</changefreq>
+      <priority>0.7</priority>
+    </url>
+  ))}
+</urlset>

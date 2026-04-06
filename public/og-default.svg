@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a"/>
+      <stop offset="100%" style="stop-color:#1e293b"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#10b981"/>
+      <stop offset="100%" style="stop-color:#34d399"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  
+  <!-- Decorative grid -->
+  <g opacity="0.03">
+    <line x1="0" y1="0" x2="1200" y2="630" stroke="#fff" stroke-width="1"/>
+    <line x1="0" y1="50" x2="1200" y2="680" stroke="#fff" stroke-width="1"/>
+    <line x1="0" y1="100" x2="1200" y2="730" stroke="#fff" stroke-width="1"/>
+    <line x1="0" y1="150" x2="1200" y2="780" stroke="#fff" stroke-width="1"/>
+    <line x1="0" y1="200" x2="1200" y2="830" stroke="#fff" stroke-width="1"/>
+    <line x1="0" y1="250" x2="1200" y2="880" stroke="#fff" stroke-width="1"/>
+    <line x1="0" y1="300" x2="1200" y2="930" stroke="#fff" stroke-width="1"/>
+    <line x1="0" y1="350" x2="1200" y2="980" stroke="#fff" stroke-width="1"/>
+    <line x1="0" y1="400" x2="1200" y2="1030" stroke="#fff" stroke-width="1"/>
+    <line x1="0" y1="450" x2="1200" y2="1080" stroke="#fff" stroke-width="1"/>
+    <line x1="0" y1="500" x2="1200" y2="1130" stroke="#fff" stroke-width="1"/>
+    <line x1="0" y1="550" x2="1200" y2="1180" stroke="#fff" stroke-width="1"/>
+    <line x1="0" y1="600" x2="1200" y2="1230" stroke="#fff" stroke-width="1"/>
+    <line x1="0" y1="0" x2="1200" y2="0" stroke="#fff" stroke-width="1"/>
+    <line x1="50" y1="0" x2="50" y2="630" stroke="#fff" stroke-width="1"/>
+    <line x1="100" y1="0" x2="100" y2="630" stroke="#fff" stroke-width="1"/>
+    <line x1="150" y1="0" x2="150" y2="630" stroke="#fff" stroke-width="1"/>
+    <line x1="200" y1="0" x2="200" y2="630" stroke="#fff" stroke-width="1"/>
+    <line x1="250" y1="0" x2="250" y2="630" stroke="#fff" stroke-width="1"/>
+    <line x1="300" y1="0" x2="300" y2="630" stroke="#fff" stroke-width="1"/>
+    <line x1="350" y1="0" x2="350" y2="630" stroke="#fff" stroke-width="1"/>
+    <line x1="400" y1="0" x2="400" y2="630" stroke="#fff" stroke-width="1"/>
+    <line x1="450" y1="0" x2="450" y2="630" stroke="#fff" stroke-width="1"/>
+    <line x1="500" y1="0" x2="500" y2="630" stroke="#fff" stroke-width="1"/>
+    <line x1="550" y1="0" x2="550" y2="630" stroke="#fff" stroke-width="1"/>
+    <line x1="600" y1="0" x2="600" y2="630" stroke="#fff" stroke-width="1"/>
+    <line x1="650" y1="0" x2="650" y2="630" stroke="#fff" stroke-width="1"/>
+    <line x1="700" y1="0" x2="700" y2="630" stroke="#fff" stroke-width="1"/>
+    <line x1="750" y1="0" x2="750" y2="630" stroke="#fff" stroke-width="1"/>
+    <line x1="800" y1="0" x2="800" y2="630" stroke="#fff" stroke-width="1"/>
+    <line x1="850" y1="0" x2="850" y2="630" stroke="#fff" stroke-width="1"/>
+    <line x1="900" y1="0" x2="900" y2="630" stroke="#fff" stroke-width="1"/>
+    <line x1="950" y1="0" x2="950" y2="630" stroke="#fff" stroke-width="1"/>
+    <line x1="1000" y1="0" x2="1000" y2="630" stroke="#fff" stroke-width="1"/>
+    <line x1="1050" y1="0" x2="1050" y2="630" stroke="#fff" stroke-width="1"/>
+    <line x1="1100" y1="0" x2="1100" y2="630" stroke="#fff" stroke-width="1"/>
+    <line x1="1150" y1="0" x2="1150" y2="630" stroke="#fff" stroke-width="1"/>
+  </g>
+  
+  <!-- Glow effects -->
+  <ellipse cx="200" cy="150" rx="200" ry="150" fill="#10b981" opacity="0.1"/>
+  <ellipse cx="1000" cy="480" rx="250" ry="180" fill="#3b82f6" opacity="0.08"/>
+  
+  <!-- Logo -->
+  <g transform="translate(520, 240)">
+    <text x="80" y="0" fill="url(#accent)" font-family="system-ui, sans-serif" font-size="72" font-weight="bold" text-anchor="middle">DC</text>
+  </g>
+  
+  <!-- Name -->
+  <text x="600" y="340" fill="#e2e8f0" font-family="system-ui, sans-serif" font-size="36" font-weight="600" text-anchor="middle">Daniel Ceballos</text>
+  
+  <!-- Role -->
+  <text x="600" y="380" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="20" text-anchor="middle">Desarrollador Full Stack</text>
+  
+  <!-- Divider -->
+  <line x1="350" y1="410" x2="850" y2="410" stroke="#334155" stroke-width="1"/>
+  
+  <!-- Services -->
+  <text x="600" y="450" fill="#10b981" font-family="system-ui, sans-serif" font-size="16" font-weight="500" text-anchor="middle">Sistemas de Agendamiento • Catálogos Digitales</text>
+  
+  <!-- CTA -->
+  <text x="600" y="520" fill="#64748b" font-family="system-ui, sans-serif" font-size="14" text-anchor="middle">danielct2005.github.io</text>
+</svg>

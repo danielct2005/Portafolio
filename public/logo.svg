@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" width="200" height="60">
+  <!-- Icono de monitor/pantalla -->
+  <rect x="5" y="12" width="40" height="28" rx="2" fill="none" stroke="#10b981" stroke-width="2"/>
+  <rect x="8" y="15" width="34" height="22" rx="1" fill="#0f172a"/>
+  <line x1="25" y1="40" x2="25" y2="45" stroke="#10b981" stroke-width="2"/>
+  <line x1="15" y1="45" x2="35" y2="45" stroke="#10b981" stroke-width="2"/>
+  <path d="M18 45 L18 48 L22 48 L22 45" fill="none" stroke="#10b981" stroke-width="1.5"/>
+  
+  <!-- Texto DC -->
+  <text x="55" y="34" font-family="system-ui, -apple-system, sans-serif" font-size="24" font-weight="700" fill="#e2e8f0">DC</text>
+  
+  <!-- Texto Dev -->
+  <text x="100" y="34" font-family="system-ui, -apple-system, sans-serif" font-size="24" font-weight="700" fill="#10b981">Dev</text>
+</svg>

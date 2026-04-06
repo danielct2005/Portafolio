@@ -1,0 +1,159 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection, render } from 'astro:content';
+
+// Generar rutas estáticas para todos los proyectos
+export async function getStaticPaths() {
+  const projects = await getCollection('projects');
+  return projects.map((project) => ({
+    params: { slug: project.id.replace(/\.md$/, '') },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props;
+const { Content } = await render(project);
+const { title, description, technologies, image, repoUrl, liveUrl, tags } = project.data;
+---
+
+<Layout 
+  title={title} 
+  description={description}
+  image={image}
+  type="article"
+>
+  <article class="py-20">
+    <div class="container mx-auto px-6 max-w-4xl">
+      <!-- Volver -->
+      <a 
+        href="/projects" 
+        class="inline-flex items-center gap-2 text-slate-400 hover:text-emerald-400 transition-colors mb-8"
+      >
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+        Volver a Proyectos
+      </a>
+
+      <!-- Imagen -->
+      <div class="relative h-64 md:h-80 rounded-2xl overflow-hidden mb-8">
+        <img 
+          src={image} 
+          alt={`Proyecto ${title}`}
+          class="w-full h-full object-cover"
+          loading="eager"
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/30 to-transparent"></div>
+      </div>
+
+      <!-- Header -->
+      <div class="mb-8">
+        <div class="flex flex-wrap gap-2 mb-4">
+          {tags?.map((tag) => (
+            <span class="px-3 py-1 text-sm font-medium bg-emerald-500/10 text-emerald-400 rounded-full border border-emerald-500/20">
+              {tag}
+            </span>
+          ))}
+        </div>
+        
+        <h1 class="text-3xl md:text-4xl font-bold text-slate-100 mb-4">
+          {title}
+        </h1>
+        
+        <p class="text-lg text-slate-400 leading-relaxed">
+          {description}
+        </p>
+      </div>
+
+      <!-- Tecnologías -->
+      <div class="mb-8">
+        <h2 class="text-xl font-bold text-slate-100 mb-4">Tecnologías</h2>
+        <div class="flex flex-wrap gap-3">
+          {technologies.map((tech) => (
+            <span class="px-4 py-2 bg-slate-800/50 border border-slate-700/50 text-slate-300 rounded-lg">
+              {tech}
+            </span>
+          ))}
+        </div>
+      </div>
+
+      <!-- Contenido Markdown -->
+      <div class="prose prose-invert prose-slate max-w-none mb-12">
+        <Content />
+      </div>
+
+      <!-- Enlaces -->
+      <div class="flex flex-col sm:flex-row gap-4">
+        {liveUrl && (
+          <a 
+            href={liveUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex-1 text-center px-6 py-4 bg-emerald-500 hover:bg-emerald-400 text-slate-900 font-semibold rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-emerald-500/25"
+          >
+            <span class="flex items-center justify-center gap-2">
+              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+              </svg>
+              Ver Demo en Vivo
+            </span>
+          </a>
+        )}
+      </div>
+
+      <!-- Contacto CTA -->
+      <div class="mt-16 p-8 bg-slate-800/30 border border-slate-700/50 rounded-2xl text-center">
+        <h3 class="text-xl font-bold text-slate-100 mb-2">¿Te gusta este proyecto?</h3>
+        <p class="text-slate-400 mb-6">Puedo crear algo similar para tu negocio.</p>
+        <a 
+          href="/contacto" 
+          class="inline-flex items-center gap-2 px-6 py-3 bg-emerald-500 hover:bg-emerald-400 text-slate-900 font-semibold rounded-lg transition-all duration-300"
+        >
+          Pedir Cotización
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </article>
+</Layout>
+
+<style is:global>
+  /* Estilos para el contenido markdown */
+  .prose h2 {
+    color: #e2e8f0;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .prose h3 {
+    color: #e2e8f0;
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+  }
+  
+  .prose p {
+    color: #94a3b8;
+    margin-bottom: 1rem;
+    line-height: 1.75;
+  }
+  
+  .prose ul {
+    color: #94a3b8;
+    margin-left: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .prose li {
+    margin-bottom: 0.5rem;
+  }
+  
+  .prose strong {
+    color: #e2e8f0;
+  }
+</style>

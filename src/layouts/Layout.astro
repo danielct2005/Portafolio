@@ -1,0 +1,50 @@
+---
+import '../styles/global.css';
+import SEOHead from '../components/SEOHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  image?: string;
+  type?: 'website' | 'article';
+}
+
+const { 
+  title, 
+  description = "Portafolio de Analista Programador - Desarrollador Frontend", 
+  image = "/og-default.svg",
+  type = "website"
+} = Astro.props;
+
+const siteTitle = `${title} | Analista Programador`;
+---
+
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <SEOHead 
+      title={siteTitle} 
+      description={description}
+      image={image}
+      type={type}
+    />
+    <!-- View Transitions (ClientRouter) -->
+    <meta name="view-transition" content="same-origin" />
+    <!-- Plausible Analytics -->
+    <script defer data-domain="danielct2005.github.io" src="https://plausible.io/js/script.js"></script>
+  </head>
+  
+  <body class="bg-slate-900 text-slate-100 antialiased min-h-screen flex flex-col">
+    <Header />
+    <main class="flex-grow">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

@@ -1,0 +1,88 @@
+---
+interface Props {
+  showProjectsButton?: boolean;
+}
+
+const { showProjectsButton = true } = Astro.props;
+
+const name = "Daniel Ceballos";
+const role = "Tecnología que funciona para tu negocio, no para impresionar";
+const tagline = "No te vendo código. Te vendo sistemas de agendamiento y catálogos web que simplifican tu operación diaria y convierten visitantes en clientes. Mientras dormís, tu negocio sigue atendiendo.";
+---
+
+<section class="relative min-h-[85vh] flex items-center justify-center overflow-hidden">
+  <!-- Fondo con gradiente animado sutil -->
+  <div class="absolute inset-0 -z-10">
+    <div class="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900"></div>
+    <!-- Patrón de grid sutil -->
+    <div class="absolute inset-0 opacity-[0.03]" 
+         style="background-image: linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px); background-size: 50px 50px;">
+    </div>
+    <!-- Luz de acento -->
+    <div class="absolute top-1/4 -left-32 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-1/4 -right-32 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"></div>
+  </div>
+
+  <div class="container mx-auto px-6 py-12">
+    <div class="max-w-3xl mx-auto text-center">
+      <!-- Badge de disponibilidad -->
+      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-sm font-medium mb-8">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        Sistemas de Agendamiento & Catálogos Web
+      </div>
+
+      <!-- Título principal -->
+      <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6">
+        <span class="bg-gradient-to-r from-slate-100 via-slate-200 to-slate-400 bg-clip-text text-transparent">
+          {name}
+        </span>
+      </h1>
+
+      <!-- Rol/Título profesional -->
+      <p class="text-2xl md:text-3xl text-slate-300 font-medium mb-6">
+        {role}
+      </p>
+
+      <!-- Tagline -->
+      <p class="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto mb-10 leading-relaxed">
+        {tagline}
+      </p>
+
+      <!-- Botones de acción mejorados -->
+      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+        <!-- Botón principal: Ver Proyectos -->
+        <a 
+          href="/projects" 
+          class="group relative px-8 py-4 bg-emerald-500 hover:bg-emerald-400 text-slate-900 font-semibold rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-emerald-500/25 hover:-translate-y-0.5"
+        >
+          <span class="relative z-10 flex items-center gap-2">
+            Ver mis proyectos
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </span>
+        </a>
+
+        <!-- Botón secundario: Hablemos -->
+        <a 
+          href="/contacto"
+          class="px-8 py-4 border border-slate-600 hover:border-emerald-500 text-slate-300 hover:text-emerald-400 font-medium rounded-lg transition-all duration-300 hover:bg-emerald-500/5"
+        >
+          <span class="flex items-center gap-2">
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+            </svg>
+            Hablemos
+          </span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+    <svg class="w-6 h-6 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+    </svg>
+  </div>
+</section>
