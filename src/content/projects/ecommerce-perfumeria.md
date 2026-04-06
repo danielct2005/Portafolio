@@ -10,7 +10,7 @@ technologies:
   - "Zustand"
 image: "https://images.unsplash.com/photo-1523293182086-7651a899d37f?w=800&auto=format&fit=crop&q=60"
 repoUrl: "https://github.com/danielct2005/CPerfumes"
-liveUrl: "https://c-perfumes.vercel.app"
+liveUrl: "https://fraganzza.vercel.app"
 order: 1
 tags: 
   - "E-commerce"
