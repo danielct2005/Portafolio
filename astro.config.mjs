@@ -11,7 +11,11 @@ export default defineConfig({
   base: '/Portafolio',
   
   vite: {
-    plugins: [tailwindcss()]
+    plugins: [tailwindcss()],
+    build: {
+      cssCodeSplit: true,
+      assetsInlineLimit: 0, // Evitar inlining de CSS
+    }
   },
 
   integrations: [mdx()]
