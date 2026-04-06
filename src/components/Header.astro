@@ -1,20 +1,21 @@
 ---
 // Header de navegación
 const navItems = [
-  { name: "Inicio", href: "/" },
-  { name: "Sobre Mí", href: "/about" },
-  { name: "Proyectos", href: "/projects" },
-  { name: "Contacto", href: "/contacto" },
+  { name: "Inicio", href: "/Portafolio/" },
+  { name: "Sobre Mí", href: "/Portafolio/about" },
+  { name: "Proyectos", href: "/Portafolio/projects" },
+  { name: "Contacto", href: "/Portafolio/contacto" },
 ];
 
 const currentPath = Astro.url.pathname;
+const basePath = "/Portafolio";
 ---
 
 <header class="fixed top-0 left-0 right-0 z-50 bg-slate-900/80 backdrop-blur-md border-b border-slate-800/50">
   <nav class="container mx-auto px-6 py-4 flex items-center justify-between">
     <!-- Logo / Nombre -->
-    <a href="/" class="flex items-center gap-2 hover:opacity-80 transition-opacity">
-      <img src="/logo.svg" alt="DC Dev" class="h-12 w-auto" />
+    <a href="/Portafolio/" class="flex items-center gap-2 hover:opacity-80 transition-opacity">
+      <img src="/Portafolio/logo.svg" alt="DC Dev" class="h-12 w-auto" />
     </a>
 
     <!-- Navegación desktop -->
